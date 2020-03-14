@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+<body>
+<p>Please clarify how do you want to get top 5 agents. You can choose from past month or past year or based on total commission. </p><br>
+<p>Please input: "past one month" or "past one year" or "commission" </p><br>
+<form action="/staff_view_agent" method="POST">
+	<input type="text" name = "method" placeholder="method" required/> </br>
+	<input type="submit" value = submit />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<a href="/staff_home">Go back</a>
+</body>
+</html>

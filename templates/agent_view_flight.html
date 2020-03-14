@@ -1,0 +1,57 @@
+<html>
+<head>
+</head>
+<body>
+<p>The table shows all future flights. You can also search with the following parameters.</p>
+<p>All the four parameters are required.</p>
+
+<form action="/agent_view_flight_optional" method="POST">
+	<input type="text" name = "departure_airport_name" placeholder="departure_airport_name" value=""/>
+	<input type="text" name = "arrival_airport_name" placeholder="arrival_airport_name" value=""/><br>
+	<input type="date" name = "departure_airport_date" placeholder="departure_airport_date" value=""/><label>(departure date)</label><br>
+	<input type="date" name = "arrival_airport_date" placeholder="arrival_airport_date" value=""/><label>(arrival date)</label><br>
+    <input type="submit" value = Search />
+</form>
+
+    {% if posts %}
+            <h1>Purchased ticket information:</h1>
+        <table border="1" width="300px" height="100px" align="left">
+            <thread>
+				<th>customer email</th>
+				<th>ticket id</th>
+				<th>flight number</th>
+				<th>airline name</th>
+				<th>arrival airport name</th>
+				<th>arrival airport date</th>
+				<th>arrival airport time</th>
+				<th>departure airport name</th>
+				<th>departure airport date</th>
+				<th>departure airport time</th>
+				<th>status</th>
+            </thread>
+            {%for line in posts%}
+                <tr>
+					<td>{{line['customer_email']}}</td>
+					<td>{{line['ticket_id']}}</td>
+					<td>{{line['flight_number']}}</td>
+					<td>{{line['airline_name']}}</td>
+					<td>{{line['arrival_airport_name']}}</td>
+					<td>{{line['arrival_airport_date']}}</td>
+					<td>{{line['arrival_airport_time']}}</td>
+					<td>{{line['departure_airport_name']}}</td>
+					<td>{{line['departure_airport_date']}}</td>
+					<td>{{line['departure_airport_time']}}</td>
+					<td>{{line['status']}}</td>
+                </tr>
+            {%endfor%}
+    </table>
+        {% else %}
+        <p>No flight found.</p>
+
+    {% endif %}
+<a href="/booking_agent_home">Go back</a>
+
+</body>
+
+
+</html>

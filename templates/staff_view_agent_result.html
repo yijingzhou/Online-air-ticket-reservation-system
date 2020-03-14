@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<table>
+	<th>booking agent email</th>
+	<th>sold tickets count / total commission count</th>
+
+{% for line in posts %}
+	<tr>
+		<td>{{line['agent_email']}}</td>
+		<td>{{line['count']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<a href="/staff_view_agent_index">Try again</a><br>
+<a href="/staff_home">Go back to the main page</a>
+
+</body>
+
+
+</html>

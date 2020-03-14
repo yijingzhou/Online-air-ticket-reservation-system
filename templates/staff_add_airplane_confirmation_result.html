@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+<h3>Confirmation page</h3>
+<p>A new airplane added.</p>
+<p>All the airplanes of your airline company are showed below:</p>
+
+<div>
+    {% if posts %}
+        <table border="1" width="300px" height="100px" align="left">
+            <thread>
+				<th>airplane id</th>
+				<th>airline name</th>
+				<th>seats</th>
+            </thread>
+
+            <tbody>
+            {%for line in posts%}
+                <tr>
+					<td>{{line['airplane_id']}}</td>
+					<td>{{line['airline_name']}}</td>
+					<td>{{line['seats']}}</td>
+                </tr>
+            {%endfor%}
+        {% else %}
+        <p>No airplane found.</p>
+	        </tbody>
+        </table>
+
+    {% endif %}
+ </div>
+<a href="/staff_home">Go Back</a>
+
+</body>
+
+
+</html>

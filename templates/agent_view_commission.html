@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+<p>The table shows commission received in the past 30 days. </p><br>
+
+<form action="/agent_view_commission_optional" method="POST">
+	<label>start from: <input type="date" name = "start_date" placeholder="start_date" value=""/></label>
+	<label>end at: <input type="date" name = "end_date" placeholder="end_date" value=""/></label>
+    <input type="submit" value = View />
+</form>
+
+    {% if posts %}
+            <h1>Your commission information for the past 30 days:</h1>
+        <table border="1" width="300px" height="100px" align="left">
+            <thread>
+				<th>email</th>
+				<th>total commission</th>
+				<th>average commission</th>
+				<th>tickets sold</th>
+            </thread>
+			<tr>
+				<td>{{posts['agent_email']}}</td>
+				<td>{{posts['total_commission']}}</td>
+				<td>{{posts['average_commission']}}</td>
+				<td>{{posts['tickets_sold']}}</td>
+			</tr>
+    </table>
+        {% else %}
+        <p>No information found.</p>
+
+    {% endif %}
+<a href="/booking_agent_home">Go back</a>
+
+</body>
+
+
+</html>

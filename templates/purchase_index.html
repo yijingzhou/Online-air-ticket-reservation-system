@@ -1,0 +1,55 @@
+<html>
+<head>
+</head>
+<body>
+{% if not message %}
+
+<h3>Ticket Info </h3> </br>
+<table>
+	<th>flight number</th>
+	<th>airline name</th>
+	<th>price</th>
+	<th>arrival airport</th>
+	<th>departure airport</th>
+	<th>arrival date</th>
+	<th>departure date</th>
+	<th>arrival time</th>
+	<th>departure time</th>
+	<th>airplane id</th>
+	<th>price</th>
+
+<tr>
+	<td>{{posts['flight_number']}}</td>
+	<td>{{posts['airline_name']}}</td>
+	<td>{{posts['arrival_airport_name']}}</td>
+	<td>{{posts['departure_airport_name']}}</td>
+	<td>{{posts['arrival_airport_date']}}</td>
+	<td>{{posts['departure_airport_date']}}</td>
+	<td>{{posts['arrival_airport_time']}}</td>
+	<td>{{posts['departure_airport_time']}}</td>
+	<td>{{posts['airplane_id']}}</td>
+	<td>{{price}}</td>
+</tr>
+
+</table>
+
+<form action="/purchase_commit" method="POST">
+	<input type="text" name = "card_type" placeholder="card_type" required/> </br>
+	<input type="text" name = "card_number" placeholder="card_number"/> </br>
+	<input type="text" name = "card_name" placeholder="card_name" required/> </br>
+	<input type="date" name = "expiration_date" placeholder="expiration_date"/><label>(expiration date)</label> </br>
+	<input type="text" name = "customer_email" placeholder="customer_email"/> </br>
+	<input type="submit" value = Purchase />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+<a href="/">Go back</a>
+{% endif %}
+
+{% if message %}
+ <h4>No ticket remains! </h4> </br>
+ <a href="/">Go back</a>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+<form action="/staff_add_flight" method="POST">
+	<p>Note: All parameters are required</p>
+	<input type="text" name = "flight_number" placeholder="fight_number" required/> </br>
+	<input type="text" name = "airline_name" placeholder="airline_name" required/> </br>
+	<input type="text" name = "airplane_id" placeholder="airplane_id" required/> </br>
+	<input type="text" name = "departure_airport_name" placeholder="departure_airport_name" required/> </br>
+	<input type="text" name = "arrival_airport_name" placeholder="arrival_airport_name" required/> </br>
+	<input type="date" name = "departure_airport_date" placeholder="departure_airport_date" required/><label>(departure date)  </label> </br>
+	<input type="time" name = "departure_airport_time" placeholder="departure_airport_time" required/><label>(departure time) </label> </br>
+	<input type="date" name = "arrival_airport_date" placeholder="arrival_airport_date" required/><label>(arrival date)</label></br>
+	<input type="time" name = "arrival_airport_time" placeholder="arrival_airport_time" required/><label>(arrival time)</label></br>
+	<input type="number" name = "base_price" placeholder="base_price" required/> </br>
+	<input type="text" name = "status" placeholder="status"/><label>("On Time" / "Delayed")</label></br>
+
+	<input type="submit" value = submit />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<a href="/staff_home">Go back</a>
+</body>
+</html>

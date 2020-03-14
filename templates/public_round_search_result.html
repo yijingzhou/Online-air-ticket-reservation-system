@@ -1,0 +1,72 @@
+<html>
+<head>
+</head>
+<body>
+
+<table>
+	<th>flight number</th>
+	<th>airline name</th>
+	<th>arrival airport</th>
+	<th>departure airport</th>
+	<th>arrival date</th>
+	<th>departure date</th>
+	<th>arrival time</th>
+	<th>departure time</th>
+	<th>airplane id</th>
+	<th>price</th>
+	<th>purchase</th>
+
+{% for line in posts %}
+	<tr>
+		<td>{{line['flight_number']}}</td>
+		<td>{{line['airline_name']}}</td>
+		<td>{{line['arrival_airport_name']}}</td>
+		<td>{{line['departure_airport_name']}}</td>
+		<td>{{line['arrival_airport_date']}}</td>
+		<td>{{line['departure_airport_date']}}</td>
+		<td>{{line['arrival_airport_time']}}</td>
+		<td>{{line['departure_airport_time']}}</td>
+		<td>{{line['airplane_id']}}</td>
+		<td>{{line['price']}}</td>
+		<td><a href="/login">Please log in first</a>
+	</tr>
+{% endfor %}
+</table>
+
+<table>
+	<th>flight number</th>
+	<th>airline name</th>
+	<th>arrival airport</th>
+	<th>departure airport</th>
+	<th>arrival date</th>
+	<th>departure date</th>
+	<th>arrival time</th>
+	<th>departure time</th>
+	<th>airplane id</th>
+	<th>price</th>
+	<th>purchase</th>
+
+{% for line in re_posts %}
+	<tr>
+		<td>{{line['flight_number']}}</td>
+		<td>{{line['airline_name']}}</td>
+		<td>{{line['arrival_airport_name']}}</td>
+		<td>{{line['departure_airport_name']}}</td>
+		<td>{{line['arrival_airport_date']}}</td>
+		<td>{{line['departure_airport_date']}}</td>
+		<td>{{line['arrival_airport_time']}}</td>
+		<td>{{line['departure_airport_time']}}</td>
+		<td>{{line['airplane_id']}}</td>
+		<td>{{line['re_price']}}</td>
+		<td><a href="/login">Please log in first</a>
+	</tr>
+{% endfor %}
+</table>
+
+
+<a href="/">Go back</a>
+
+</body>
+
+
+</html>

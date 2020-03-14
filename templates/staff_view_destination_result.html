@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+
+<p>For past three months: </p>
+
+<table>
+	<th>city name</th>
+	<th>number of visits</th>
+
+{% for line in data1 %}
+	<tr>
+		<td>{{line['name']}}</td>
+		<td>{{line['count']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<p>For past year: </p>
+
+<table>
+	<th>city name</th>
+	<th>number of visits</th>
+
+{% for line in data2 %}
+	<tr>
+		<td>{{line['name']}}</td>
+		<td>{{line['count']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<a href="/staff_home">Go back to the main page</a>
+
+</body>
+
+
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>
+</head>
+<body>
+<p>The table shows future flights in one month. You can also search with specified parameters.</p>
+<p>Note: Please fill in all the three parameters:</p>
+
+<form action="/staff_flight_search" method="POST">
+	<input type="text" name = "arrival_airport_name" placeholder="arrival_airport_name" value=""/>
+	<input type="text" name = "departure_airport_name" placeholder="departure_airport_name" value=""/><br>
+	<label>departure date:</label><input type="date" name = "departure_airport_date" placeholder="departure_airport_date" value=""/>
+    <input type="submit" value = Search />
+</form>
+<div>
+    {% if posts %}
+            <h1>Future flight information:</h1>
+        <table border="1" width="300px" height="100px" align="left">
+            <thread>
+				<th>flight number</th>
+				<th>airline name</th>
+				<th>arrival airport name</th>
+				<th>departure airport name</th>
+				<th>arrival airport date</th>
+				<th>arrival airport time</th>
+				<th>departure airport date</th>
+				<th>departure airport time</th>
+				<th>base price</th>
+				<th>status</th>
+				<th>airplane id</th>
+            </thread>
+
+            <tbody>
+            {%for line in posts%}
+                <tr>
+					<td>{{line['flight_number']}}</td>
+					<td>{{line['airline_name']}}</td>
+					<td>{{line['arrival_airport_name']}}</td>
+					<td>{{line['departure_airport_name']}}</td>
+					<td>{{line['arrival_airport_date']}}</td>
+					<td>{{line['arrival_airport_time']}}</td>
+					<td>{{line['departure_airport_date']}}</td>
+					<td>{{line['departure_airport_time']}}</td>
+					<td>{{line['base_price']}}</td>
+					<td>{{line['status']}}</td>
+					<td>{{line['airplane_id']}}</td>
+                </tr>
+            {%endfor%}
+        {% else %}
+        <p>No flight found.</p>
+	        </tbody>
+        </table>
+
+    {% endif %}
+ </div>
+<a href="/staff_home">Go Back</a>
+
+</body>
+
+
+</html>

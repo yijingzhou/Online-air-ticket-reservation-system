@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+	<h4>user_type can only be staff/customer/booking_agent </h4> </br>
+<form action="/loginAuth" method="POST">
+	<input type="text" name = "username" placeholder="username/email" required/> </br>
+	<input type="password" name = "password" placeholder="password" required/></br>
+	<input type="text" name = "user_type" placeholder="user_type" required/></br>
+	<input type="submit" value = Login />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<a href="/">Go back</a>
+
+</body>
+
+
+</html>

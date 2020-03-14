@@ -1,0 +1,104 @@
+<html>
+<head>
+<script>
+var dir_sale1 = {{dir_sale1|tojson}}
+var indir_sale1 = {{indir_sale1|tojson}}
+var dir_sale2 = {{dir_sale2|tojson}}
+var indir_sale2 = {{indir_sale1|tojson}}
+window.onload = function () {
+
+var chart1 = new CanvasJS.Chart("chartContainer1", {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "Monthly Revenue Comparison"
+	},
+	legend:{
+		cursor: "pointer",
+		itemclick: explodePie
+	},
+	data: [{
+		type: "pie",
+		showInLegend: true,
+		toolTipContent: "{name}: <strong>{y}%</strong>",
+		indexLabel: "{name} - {y}%",
+		dataPoints: [
+			{ y: dir_sale1, name: "Direct Sale", exploded: true },
+			{ y: indir_sale1, name: "Indirect Sale" }
+		]
+	}]
+});
+
+var chart2 = new CanvasJS.Chart("chartContainer2", {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "Yearly Revenue Comparison"
+	},
+	legend:{
+		cursor: "pointer",
+		itemclick: explodePie
+	},
+	data: [{
+		type: "pie",
+		showInLegend: true,
+		toolTipContent: "{name}: <strong>{y}%</strong>",
+		indexLabel: "{name} - {y}%",
+		dataPoints: [
+			{ y: dir_sale2, name: "Direct Sale", exploded: true },
+			{ y: indir_sale2, name: "Indirect Sale" }
+		]
+	}]
+});
+chart1.render();
+chart2.render();
+}
+
+function explodePie (e) {
+	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	}
+	e.chart.render();
+
+}
+</script>
+
+</head>
+<body>
+<a href="/staff_home">Go back to the main page</a></br>
+<div style="float: left;height: 900px; width: 50%;">
+<p>For past month: </p>
+<table>
+	<th>no agent</th>
+	<th>with agent</th>
+
+	<tr>
+		<td>{{data1['revenue']}}</td>
+		<td>{{data2['revenue']}}</td>
+	</tr>
+</table>
+<div id="chartContainer1" style="height: 300px; width: 80%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</div>
+
+<div style="float: right;height: 900px; width: 50%;">
+<p>For past year: </p>
+<table>
+	<th>no agent</th>
+	<th>with agent</th>
+
+	<tr>
+		<td>{{data3['revenue']}}</td>
+		<td>{{data4['revenue']}}</td>
+	</tr>
+</table>
+
+<div id="chartContainer2" style="height: 300px; width: 80%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</div>
+</body>
+
+
+</html>

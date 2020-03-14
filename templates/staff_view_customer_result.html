@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+<body>
+
+<p>This table shows the most frequent customer and his/her flight for your airline company:</p>
+
+<table>
+	<th>customer email</th>
+	<th>flight number</th>
+
+{% for line in posts %}
+	<tr>
+		<td>{{line['customer_email']}}</td>
+		<td>{{line['flight_number']}}</td>
+	</tr>
+{% endfor %}
+</table>
+
+<a href="/staff_home">Go back to the main page</a>
+
+</body>
+
+
+</html>

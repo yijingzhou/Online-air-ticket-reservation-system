@@ -1,0 +1,102 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+<script>
+var month_ticket_sale = {{month_ticket_sale|tojson}}
+var year_ticket_sale = {{year_ticket_sale|tojson}}
+var end_date = {{end_date|tojson}}
+var end_date_d = new Date(end_date);
+var month_label = (end_date_d.getMonth()+1)
+var year_label = end_date_d.getYear()-100
+var time_label = year_label + '/' + month_label
+
+var labels = []
+for (var i=0;i<year_ticket_sale.length;i++){
+    var month = (end_date_d.getMonth() - (year_ticket_sale.length-2-i));
+    var year = end_date_d.getYear()-100;
+    if (month <= 0) {
+    	month = month + 12
+    	year = year-1
+    }
+    var temp_label = year + '/' + month
+    labels.push(temp_label)
+}
+
+var temp = []
+for (var i=0;i<year_ticket_sale.length;i++){
+	temp.push({y:year_ticket_sale[year_ticket_sale.length-1-i], label: labels[i]})
+}
+
+window.onload = function () {
+var chart1 = new CanvasJS.Chart("chartContainer1", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Last month ticket sale"
+	},
+	axisY: {
+		title: "number of ticket"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: false, 
+		legendMarkerColor: "grey",
+		legendText: "num",
+		dataPoints: [{y:month_ticket_sale, label: time_label}]
+	}]
+});
+
+var chart2 = new CanvasJS.Chart("chartContainer2", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Last year ticket sale"
+	},
+	axisY: {
+		title: "number ticket sale"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: false, 
+		legendMarkerColor: "grey",
+		legendText: "num",
+		dataPoints: temp
+	}]
+});
+
+chart1.render();
+chart2.render();
+
+}
+</script>
+</head>
+<body>
+
+
+<a href="/staff_home">Go back to the main page</a><br>
+
+<form action="/staff_view_reports_optional" method="POST">
+    <label>start from: <input type="date" name = "start_date" placeholder="start_date" value=""/></label>
+    <label>end at: <input type="date" name = "end_date" placeholder="end_date" value=""/></label>
+    <input type="submit" value = View />
+</form>
+
+<div style="float: left;height: 900px; width: 50%;">
+<p>last month ticket sold: {{data1['num_t']}}</p><br>
+<p></p><br>
+<div id="chartContainer1" style="height: 300px; width: 80%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+</div>
+
+<div style="float: right;height: 900px; width: 50%;">
+<p>last year ticket sold: {{data2['num_t']}} </p><br>
+<p></p><br>
+<div id="chartContainer2" style="height: 300px; width: 80%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,58 @@
+<html>
+<head>
+</head>
+<body>
+
+<a href="/booking_agent_home">Go Back</a><br>
+<p></p><br>
+<div style="float: left">
+	{% if data1 %}
+        <h5>Top 5 customers based on number of tickets (past 6 months): </h5>
+        <table border="1" width="300px" height="100px" align="left">
+            <thread>
+				<th>customer email</th>
+				<th>number of tickets sold</th>
+            </thread>
+            {%for line in data1%}
+                <tr>
+					<td>{{line['customer_email']}}</td>
+					<td>{{line['tickets_sold']}}</td>
+                </tr>
+            {%endfor%}
+    </table>
+        {% else %}
+        <p>No customer found.</p>
+    {% endif %}
+    <p></p><br>
+    <img src={{ url_for('static', filename='top5_c_ticket.png')}} alt="top5_c_ticket" width="400px" height="auto"/><br>
+
+</div>
+
+<div style="float: right">
+    {% if data2 %}
+        <h5 align='right'>Top 5 customers based on amount of commissions received (past year): </h5>
+        <table border="1" width="300px" height="100px" align="right">
+            <thread>
+				<th>customer email</th>
+				<th>total commissions</th>
+            </thread>
+            {%for line in data2%}
+                <tr>
+					<td>{{line['customer_email']}}</td>
+					<td>{{line['total_commission']}}</td>
+                </tr>
+            {%endfor%}
+    </table>
+        {% else %}
+        <p>No customer found.</p>
+    {% endif %}
+    <p></p><br>
+    <img src={{ url_for('static', filename='top5_c_commission.png')}} alt="top5_c_commission" width="400px" height="auto"/><br>
+</div>
+
+
+
+</body>
+
+
+</html>
