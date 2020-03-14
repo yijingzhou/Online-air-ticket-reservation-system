@@ -1,0 +1,14 @@
+summary of work division
+
+Yijing Zhou:
+Customer 4,7
+Booking agent 4,7-8
+Airline staff 4-10,12-13
+system test and optimization
+
+Ruoming Gong:
+Public 1-3
+Customer 5,6,8
+Booking agent 5,6,9
+Airline staff 11,12,14
+All bar charts and pie charts
